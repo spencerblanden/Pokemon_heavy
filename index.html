@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script defer src="./js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Intro to AJAX</title>
+    <title>Pokemon Heavy</title>
 </head>
-<body>
+
+<body class="Site">
+    <header>
+        <h2 class='nav1'>Light<br>Weight</h2>
+        <h2 class='nav1'>Middle<br>Weight</h2>
+        <h2 class='nav'><img id="logo" src="/Pokemon-removebg-preview.png" alt="me"></img></h2>
+        <h2 class='nav2'>Heavy<br>Weight</h2>
+        <h2 class='nav2'>All<br>Weight</h2>
+    </header>
+    <main class="Site-content">
+
+        <div class='pkmn_dets' id='leftPoke'>
+            <div id='box'></div>
+            <h4 id='pokeOne'>Charmander</h4>
+            <img id='lpkmn' class='pkmn' src=https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png> </img>
+        </div> 
+        <div class='middle'>
+            <button type="submit" id='midBtn'>New Game</button>
+            <div id='box3'>
+                <h1>Which Pokemon<br>is Heavier?</h1>
+            </div>
+        </div>
+        <div class='pkmn_dets' id='rightPoke'>
+            <div id='box2'></div>
+            <h4>Squirtle</h4>
+            <img class='pkmn' src=https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png> </img> 
+        </div> 
+    </main>
+    <div class='pkmn_buttons'>
+        <button type="button" class='pkmn_btn' id='btnLeft'>I Choose You</button> 
+        <div><p id='response'></p></div>
+        <button type="button" class='pkmn_btn' id='btnRight'>I Choose You</button>
+    </div>
+    <footer>
+        <h3 id='correct'>Correct: 0</h3>
+        <h3 id='incorrect'>Incorrect: 0</h3>
+    </footer>
 </body>
+
 </html>
