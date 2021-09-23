@@ -11,7 +11,7 @@ myStorage = window.localStorage;
     let pokeData;
     let correct=0;
     let incorrect=0;  
-    let generation = 1;  
+    const gennn = 1;  
 
     
     
@@ -105,7 +105,8 @@ $form.on('submit', handleGetDataName)
     // get data functions
         function handleGetData1(event) {
             event.preventDefault();
-            const gennn = localStorage.getItem('generation');
+            let gennn = 1;
+            gennn = localStorage.getItem('generation');
             getIdNum(gennn);
         
             $.ajax(`${BASE_URL}api/v2/pokemon/${idNum}/`).then(function(data) {
@@ -120,7 +121,8 @@ $form.on('submit', handleGetDataName)
         }
         function handleGetData2(event) {
             event.preventDefault();
-            const gennn = localStorage.getItem('generation');
+            let gennn = 1;
+            gennn = localStorage.getItem('generation');
             getIdNum(gennn);
     
         
@@ -137,7 +139,8 @@ $form.on('submit', handleGetDataName)
         }
         function handleGetDataType(event) {
             event.preventDefault();
-            const gennn = localStorage.getItem('generation');
+            let gennn = 1;
+            gennn = localStorage.getItem('generation');
             getIdNum(gennn);
         
             $.ajax(`${BASE_URL}api/v2/pokemon/${idNum}/`).then(function(data) {
@@ -234,6 +237,7 @@ $form.on('submit', handleGetDataName)
         if (num === null) {
             num = 1;
         }
+        console.log(num)
         if (num === 0){
             localStorage.setItem('generation', 0)
     }else if(num === 1) {
