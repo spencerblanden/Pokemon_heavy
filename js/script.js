@@ -1,8 +1,8 @@
 $(function(){
 
-//     window.onload = function(event) {
-//         render(event);
-//       };
+    // window.onload = function(event) {
+    //     render1(event);
+    //   };
 myStorage = window.localStorage;
 
 //Global Variables
@@ -24,6 +24,8 @@ myStorage = window.localStorage;
     let pokeHeight1 = 0;
     let pokeHeight2 = 0;
 
+    let pokeType= '';
+
     let randomizedChoiceTypes = [];
       let actualType;
 
@@ -39,6 +41,7 @@ let $inputHL =$('#btnLeft_height')
 let $inputHR =$('#btnRight_height')
 let $reset =$('#btnMCReset')
 
+
 let $gen1 = $('#btnGen1')
 let $gen2 = $('#btnGen2')
 let $gen3 = $('#btnGen3')
@@ -46,10 +49,19 @@ let $gen4 = $('#btnGen4')
 let $genAll = $('#btnGen0')
 
 
+let $choiceA = $('#btnA');
+let $choiceB = $('#btnB');
+let $choiceC = $('#btnC');
+let $choiceD = $('#btnD');
+
+let $form =$('form');
+let $input = $('input[type="text"]');
+let $nameData = $('#nameData')
 
 //Poke Heavy HTML Element Variable Assignment
 let $name1 =$('#leftPoke');
 let $name2 =$('#rightPoke');
+let $name = $('#poke')
 
 //Poke Height HTML ELement Variable Assignment
 let $name_choices =$('.pkmn_choices');
@@ -57,7 +69,7 @@ let $name_choices =$('.pkmn_choices');
 
 
 // buttons
-$inputNew.on('click', newGame)
+$inputNew.on('click', clearScoreNormal)
 $inputLeft.on('click', function(){result1(pokeWeight1, pokeWeight2)})
 $inputRight.on('click', function(){result2(pokeWeight1, pokeWeight2)})
 $inputHL.on('click', function(){result1(pokeHeight1, pokeHeight2)})
@@ -71,13 +83,15 @@ $gen3.on('click', function(){setGen(3)})
 $gen4.on('click', function(){setGen(4)})
 $genAll.on('click', function(){setGen(0)})
 
-
-
+$form.on('submit', handleGetDataName)
 
 //functions
     function newGame(event) {
+        $inputNew.text('Reset?')
         handleGetData1(event);
         handleGetData2(event);
+        
+        
     }
 
     function newMP(event) {
@@ -135,7 +149,25 @@ $genAll.on('click', function(){setGen(0)})
                 console.log(error);
             } );}
 
+            function handleGetDataName(event) {
+                event.preventDefault();
 
+                const pokeSearch = $input.val();
+                $input.val("");
+
+                $.ajax(`${BASE_URL}api/v2/pokemon/${pokeSearch}/`).then(function(data) {
+                    pokeData = data;
+                    console.log(data)
+                   pokeWeight2 = pokeData.weight;
+                   pokeHeight2 = pokeData.height;
+                   pokeType= getType(pokeData).join(', ');
+                //    pokeGen = pokeData.
+                renderFacts();
+                   console.log(pokeHeight2)
+                }, function (error) {
+                    console.log(error);
+                } );
+            }
     
     function result1(pokePoint1, pokePoint2) {
         console.log('1push')
@@ -154,9 +186,10 @@ $genAll.on('click', function(){setGen(0)})
             $outcome.show();
             addIncorrect(1);
     } else {
-        outcome = 'error'
+        outcome = 'same'
         $outcome.append( `
-            <p id='response'>${outcome}</p>`)
+            <p id='response'>Tricked ya! Those are the ${outcome}!</p>
+            <button type='button' class='gameOn'>Keep going?</button>`)
             $outcome.show();
     } 
     let $gameAgain = $('.gameOn');
@@ -181,9 +214,10 @@ $genAll.on('click', function(){setGen(0)})
         $outcome.show();
         addIncorrect(1);
     } else {
-        outcome = 'error'
+        outcome = 'same'
         $outcome.append( `
-            <p id='response'>${outcome}</p>`)
+        <p id='response'>Tricked ya! Those are the ${outcome}!</p>
+        <button type='button' class='gameOn'>Keep going?</button>`)
             $outcome.show();
     }
     let $gameAgain = $('.gameOn');
@@ -256,8 +290,22 @@ $genAll.on('click', function(){setGen(0)})
        $name2.append(`
             <div id='box'></div>
             <h4>${pokeData.name}</h4>
-            <img id='lpkmn' class='pkmn' src=
+            <img id='rpkmn' class='pkmn' src=
             ${pokeData.sprites.front_default}> </img>`);
+    }
+
+    function renderFacts() {
+        $name.empty();
+       $name.append(`
+            <div id='box'></div>
+            <h4>${pokeData.name}</h4>
+            <img id='cpkmn' class='pkmn' src=
+            ${pokeData.sprites.front_default}> </img>`)
+        $nameData.empty();
+       $nameData.append(`
+            <h6>Weight:  ${pokeWeight2}</h6>
+            <h6>Height:  ${pokeHeight2}</h6>
+            <h6>Type:  ${pokeType}</h6>`);
     }
 
     function addCorrect(num) {
@@ -318,8 +366,8 @@ $genAll.on('click', function(){setGen(0)})
 
             
             randomizedChoiceTypes = shuffle(choiceTypes)
-
             $name_choices.empty();
+           
             $name_choices.append(`<button type="button" class='pkmn_c' id='btnA'>A</button>
             <p class='choice'>${randomizedChoiceTypes[0]}</p>
             <button type="button" class='pkmn_c' id='btnB'>B</button>
@@ -329,10 +377,10 @@ $genAll.on('click', function(){setGen(0)})
             <button type="button" class='pkmn_c' id='btnD'>D</button>
             <p class='choice'>${randomizedChoiceTypes[3]}</p>
             `)
-            let $choiceA = $('#btnA');
-            let $choiceB = $('#btnB');
-            let $choiceC = $('#btnC');
-            let $choiceD = $('#btnD');
+            $choiceA = $('#btnA');
+            $choiceB = $('#btnB');
+            $choiceC = $('#btnC');
+            $choiceD = $('#btnD');
             $choiceA.on('click', function(){mpCheck(randomizedChoiceTypes[0], actualType)})
             $choiceB.on('click', function(){mpCheck(randomizedChoiceTypes[1], actualType)})
             $choiceC.on('click', function(){mpCheck(randomizedChoiceTypes[2], actualType)})
@@ -344,6 +392,9 @@ $genAll.on('click', function(){setGen(0)})
 
         function mpCheck(choice, proof) {
             console.log('2push')
+            $name_choices.empty();
+
+
             let outcome = ('');
             if (choice === proof){
                 console.log('yes')
@@ -427,8 +478,20 @@ $genAll.on('click', function(){setGen(0)})
 
         handleGetDataType(event)
     }
-    });
+    function clearScoreNormal() {
+        correct = 0;
+        $correct.empty();
+        $correct.text(`Correct: 0`)
+        incorrect = 0;
+        $inCorrect.empty();
+        $inCorrect.text(`Incorrect: 0`)
 
+        cleanUp(event);
+
+
+    } 
+    });
+  
 
 
     
