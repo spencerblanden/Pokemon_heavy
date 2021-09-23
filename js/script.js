@@ -81,7 +81,7 @@ $gen1.on('click', function(){setGen(1)})
 $gen2.on('click', function(){setGen(2)})
 $gen3.on('click', function(){setGen(3)})
 $gen4.on('click', function(){setGen(4)})
-$genAll.on('click', function(){setGen(0)})
+$genAll.on('click', function(){setGen(5)})
 
 $form.on('submit', handleGetDataName)
 
@@ -234,11 +234,8 @@ $form.on('submit', handleGetDataName)
 
     function setGen(num) {
         console.log(num)
-        if (num === null) {
-            num = 1;
-        }
-        console.log(num)
-        if (num === 0){
+       
+        if (num === 5){
             localStorage.setItem('generation', 0)
     }else if(num === 1) {
         localStorage.setItem('generation', 1)
@@ -251,7 +248,7 @@ $form.on('submit', handleGetDataName)
     }
     console.log(localStorage.getItem('generation'))
     let genNow;
-    if (num === 0) {
+    if (num === 5) {
         genNow = 'all';
     } else if(num === 1){
         genNow = 'one';
@@ -269,7 +266,11 @@ $form.on('submit', handleGetDataName)
 
     function getIdNum(num) {
         console.log(num)
-        if (num == 0){
+        if (num === false) {
+            num = 1;
+        }
+        console.log(num)
+        if (num == 5){
             idNum = Math.floor(Math.random() * 493);
         }else if(num == 1) {
             idNum = Math.floor(Math.random() * 151);
