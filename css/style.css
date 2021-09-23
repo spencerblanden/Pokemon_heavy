@@ -10,9 +10,6 @@ body {
     "btns"
     "footer";
     margin: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 header {
     display: grid;
@@ -20,17 +17,34 @@ header {
     grid-template-rows: 1fr;
     grid-template-areas: 
     "lefter""left""center""right""righter";
-    position: relative;
+  
+    background-color: rgb(32 30 29);
+    color: rgb(252 249 249);
+    height:150px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
 }
-h2 {
+#genHead {
+    min-height: 150px; 
+    height: 100%; 
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+a {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(32 30 29);
+    justify-items: center;
+    margin: 0;
+    padding: 0;
     color: rgb(252 249 249);
-    height: 150px;
-    width: 100%;
+    width: 20px;
+    font-size: 2rem;
+    text-decoration: none;
 }
 main {
     display: grid;
@@ -45,12 +59,39 @@ main {
     justify-content: center;
  
 }
+#main_type {
+    display: grid;
+    grid-template-columns: 3fr 1fr 3fr;
+    grid-template-rows: 1fr auto 1fr;
+    grid-template-areas: 
+    "top"
+    "left""center""right";
+    width: 100%;
+    
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
 .pkmn_dets {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    font-size: 1.8rem;
+}
+.pkmnType_dets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    min-height: 350px;
+}
+#leftPoke {
+    margin-left: 80px;
+}
+#rightPoke {
+    margin-right: 80px;
 }
 #box {
     height: 210px;
@@ -59,6 +100,7 @@ main {
     transform: rotate(10deg);
     position: absolute;
     z-index: -1;
+    margin-top: 40px;
 }
 #box2 {
     height: 210px;
@@ -69,7 +111,7 @@ main {
     z-index: -1;
 }
 .pkmn {
-    height: 250px;
+    height: 275px;
     width: 100%;
 }
 .middle{
@@ -86,7 +128,7 @@ main {
     ".";
     margin: 0;
 }
-#midBtn {
+.midBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,6 +155,22 @@ main {
     border: 8px solid rgb(32 30 29);
 
 }
+#box4 {
+    height: 80%;
+    max-height:100px;
+    max-width: 750px;
+    width: 100%;
+    background-color: rgb(200 10 21);
+    color: rgb(252 249 249);
+    display: grid;
+    grid-column-start: 1;
+  grid-column-end: span col2-start;
+    justify-items: center;
+    align-content:center;
+    align-items:center;
+    border: 8px solid rgb(32 30 29);
+    
+}
 h1 {
   display: grid;
     justify-items: center;
@@ -128,7 +186,16 @@ h1 {
 #logo {
     width: 250px;
     height: 260px;
-    margin: -20px -30px -40px 0px;
+    margin: 0px -30px -40px 0px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#logo1 {
+    width: 250px;
+    height: 260px;
+    margin: 0px -30px -40px 0px;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -159,8 +226,8 @@ footer{
     background-color: rgb(32 30 29);;
     justify-content: space-evenly;
     align-items: center;
-    
-    height: 60px;
+    font-size: 2rem;
+    height: 100px;
 
 }
 h3 {
@@ -176,3 +243,120 @@ h3 {
   .Site-content {
     flex: 1;
   }
+ .pkmn_choices {
+    display: grid;
+    grid-template-columns:  1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "a""a"
+    "b""b"
+    "c""c"
+    "d""d";
+    width: 30%; 
+    min-height:70px;
+    justify-items: start;
+    align-items: center;
+    justify-content: center; 
+    margin-right: 60px;
+}
+.fas {
+    font-size: 8rem;
+}
+#btnMCStart{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center; 
+    font-size: 2rem;
+    background-color: rgb(200 10 21);
+    color:rgb(252 249 249);
+    border: 2px solid black;
+    border-radius: 10%;
+}
+#btnMCReset {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center; 
+    font-size: 2rem;
+    background-color: rgb(200 10 21);
+    color:rgb(252 249 249);
+    border: 2px solid black;
+    border-radius: 10%;
+}
+.pkmn_c {
+    font-size: 1.5rem;
+    background-color: rgb(200 10 21);
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 10%;
+}
+.choice {
+    font-size: 1.7rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pkmn_btn {
+    font-size: 2rem;
+    background-color: rgb(200 10 21);
+    color:rgb(252 249 249);
+    border: 2px solid black;
+    border-radius: 10%;
+    
+}
+#response {
+    font-size: 1.5rem;
+    background-color: rgb(252 249 249);
+    margin-top: 5px;
+  margin: -50px 5px 0 5px;
+}
+.gameOn {
+    background-color: rgb(200 10 21);
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+#btnRight {
+margin-right: 80px;
+}
+#btnLeft {
+margin-left: 80px;
+}
+#genMain {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "topside""top"
+    "centerside""center"
+    "centerotherside""centerother"
+    "bottomside""bottom";
+    
+    width: 100%;
+
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+h5 {
+    font-size: 1.5rem;
+    margin: 5px 0 5px 0;
+}
+h2 {font-size: 2.5rem;
+    margin: 5px 0 5px 0;
+}
+.genpics {
+    max-width: 400px;
+}
+.btnGen {
+    background-color: white;
+    border: 2px solid black;
+    font-size: 1.2rem;
+}
+#allgen {
+display:flex;
+flex-direction: column;
+justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
