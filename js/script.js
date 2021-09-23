@@ -231,6 +231,9 @@ $form.on('submit', handleGetDataName)
 
     function setGen(num) {
         console.log(num)
+        if (num === null) {
+            num = 1;
+        }
         if (num === 0){
             localStorage.setItem('generation', 0)
     }else if(num === 1) {
