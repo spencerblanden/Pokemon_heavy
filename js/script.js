@@ -86,6 +86,8 @@ $genAll.on('click', function(){setGen(5)})
 
 $form.on('submit', handleGetDataName)
 
+
+
 //functions
     function newGame(event) {
         $inputNew.text('Reset?')
@@ -230,6 +232,10 @@ $form.on('submit', handleGetDataName)
     
     function cleanUp(event) {
         $outcome.empty()
+        $inputLeft.css("visibility", "visible")
+        $inputRight.css("visibility", "visible")
+        $inputHL.css("visibility", "visible")
+        $inputHR.css("visibility", "visible")   
         newGame(event);
     }
 

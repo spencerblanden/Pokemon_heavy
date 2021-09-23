@@ -326,11 +326,13 @@ h3 {
     align-items: center;
     justify-content: center;
 }
-#btnRight {
+#btnRight, #btnRight_height {
 margin-right: 80px;
+visibility: hidden;
 }
-#btnLeft {
+#btnLeft, #btnLeft_height{
 margin-left: 80px;
+visibility: hidden;
 }
 #genMain {
     display: grid;
