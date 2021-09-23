@@ -1,9 +1,10 @@
 $(function(){
 
-    // window.onload = function(event) {
+    // window.onload = function() {
     //     render1(event);
     //   };
 myStorage = window.localStorage;
+localStorage.setItem('generation', 1)
 
 //Global Variables
     const BASE_URL = 'https://pokeapi.co/';
@@ -11,7 +12,7 @@ myStorage = window.localStorage;
     let pokeData;
     let correct=0;
     let incorrect=0;  
-    const gennn = 1;  
+    let gennn = 1;  
 
     
     
@@ -105,7 +106,7 @@ $form.on('submit', handleGetDataName)
     // get data functions
         function handleGetData1(event) {
             event.preventDefault();
-            let gennn = 1;
+            gennn = 1;
             gennn = localStorage.getItem('generation');
             getIdNum(gennn);
         
@@ -121,7 +122,7 @@ $form.on('submit', handleGetDataName)
         }
         function handleGetData2(event) {
             event.preventDefault();
-            let gennn = 1;
+            gennn = 1;
             gennn = localStorage.getItem('generation');
             getIdNum(gennn);
     
@@ -139,7 +140,7 @@ $form.on('submit', handleGetDataName)
         }
         function handleGetDataType(event) {
             event.preventDefault();
-            let gennn = 1;
+            gennn = 1;
             gennn = localStorage.getItem('generation');
             getIdNum(gennn);
         
@@ -236,7 +237,7 @@ $form.on('submit', handleGetDataName)
         console.log(num)
        
         if (num === 5){
-            localStorage.setItem('generation', 0)
+            localStorage.setItem('generation', 5)
     }else if(num === 1) {
         localStorage.setItem('generation', 1)
     }else if(num === 2) {
