@@ -10,8 +10,8 @@ In this project a Pokemon API is used to provide data for 3 trivia games that te
 - PokeAPI
 
 # Screenshots
-![screenshot](./screenshot.png)
-![screenshot2](./screenshot2.png)
+![screenshot1](./screenshot.png)
+![screenshot2](./screenshot20.png)
 ![screenshot3](./screenshot3.png)
 
 # Getting Started
