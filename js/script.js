@@ -4,7 +4,7 @@ $(function(){
     //     render1(event);
     //   };
 myStorage = window.localStorage;
-localStorage.setItem('generation', 1)
+
 
 //Global Variables
     const BASE_URL = 'https://pokeapi.co/';
@@ -273,7 +273,7 @@ $form.on('submit', handleGetDataName)
 
     function getIdNum(num) {
         console.log(num)
-        if (num === false) {
+        if (num === null) {
             num = 1;
         }
         console.log(num)
@@ -350,10 +350,12 @@ $form.on('submit', handleGetDataName)
         if (num === 2){
             let type1 = typeGroup[0]
             let type2 = typeGroup[1]
+            
             typeIndex= pokeTypes.indexOf(type1)
             actualType=pokeTypes[typeIndex]
             pokeTypes.splice(typeIndex, 1)
             typeIndex2= pokeTypes.indexOf(type2)
+            
             let actualType2=pokeTypes[typeIndex2]
             pokeTypes.splice(typeIndex2, 1)
             console.log(actualType, actualType2)
@@ -366,6 +368,7 @@ $form.on('submit', handleGetDataName)
             console.log(actualType)
             console.log(pokeTypes)
             }
+            
             let randNum =Math.floor(Math.random() * 16)
             let choiceTypes = []
             choiceTypes.push(pokeTypes.splice(randNum, 1))
